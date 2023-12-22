@@ -6,26 +6,6 @@ import time
 # duration = 0
 
 
-def merge_sort(data):
-    if len(data) <= 1:
-        return data
-
-    mid = len(data) // 2
-
-    left_array = []
-    for i in range(mid):
-        left_array.append(data[i])
-
-    right_array = []
-    for i in range(mid, len(data)):
-        right_array.append(data[i])
-
-    left = merge_sort(left_array)
-    right = merge_sort(right_array)
-
-    return merge(left, right)
-
-
 def merge(left, right):
     result = []
     i, j = 0, 0
@@ -46,14 +26,34 @@ def merge(left, right):
     return result
 
 
+def merge_sort(data):
+    if len(data) <= 1:
+        return data
+
+    mid = len(data) // 2
+
+    left_array = []
+    for i in range(mid):
+        left_array.append(data[i])
+
+    right_array = []
+    for i in range(mid, len(data)):
+        right_array.append(data[i])
+
+    left = merge_sort(left_array)
+    right = merge_sort(right_array)
+
+    return merge(left, right)
+
+
 # Example usage
-last_number = 100
-data = list(range(1, last_number + 1))
+input_size = 100
+data = list(range(1, input_size + 1))
 random.shuffle(data)
-print(f"Unsorted data: {data}")
+print(f"Unsorted: {data}")
 start_time = time.time()
 sorted_data = merge_sort(data)
 end_time = time.time()
 duration = end_time - start_time
-print(f"Sorted data: {sorted_data}")
+print(f"Sorted: {sorted_data}")
 print(f"Duration: {duration}")
