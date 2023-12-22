@@ -25,7 +25,8 @@ def merge(left, right):
 
 
 # Example usage
-data = list(range(1, 21))
+last_number = 20
+data = list(range(1, last_number + 1))
 random.shuffle(data)
 print(f"Unsorted data: {data}")
 sorted_data = merge_sort(data)
