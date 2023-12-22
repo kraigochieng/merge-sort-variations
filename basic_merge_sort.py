@@ -1,10 +1,6 @@
 import random
 import time
 
-# start_time = 0
-# end_time = 0
-# duration = 0
-
 
 def merge(left, right):
     result = []
@@ -26,34 +22,42 @@ def merge(left, right):
     return result
 
 
-def merge_sort(data):
-    if len(data) <= 1:
-        return data
+def basic_merge_sort(array):
+    if len(array) <= 1:
+        return array
 
-    mid = len(data) // 2
+    mid = len(array) // 2
 
     left_array = []
     for i in range(mid):
-        left_array.append(data[i])
+        left_array.append(array[i])
 
     right_array = []
-    for i in range(mid, len(data)):
-        right_array.append(data[i])
+    for i in range(mid, len(array)):
+        right_array.append(array[i])
 
-    left = merge_sort(left_array)
-    right = merge_sort(right_array)
+    left = basic_merge_sort(left_array)
+    right = basic_merge_sort(right_array)
 
     return merge(left, right)
 
 
-# Example usage
+# Input Size
 input_size = 100
-data = list(range(1, input_size + 1))
-random.shuffle(data)
-print(f"Unsorted: {data}")
+# Create random array
+array = list(range(1, input_size + 1))
+random.shuffle(array)
+# Display random array
+print(f"Unsorted: {array}")
+# Start Timer
 start_time = time.time()
-sorted_data = merge_sort(data)
+# Sort array
+sorted_array = basic_merge_sort(array)
+# End Timer
 end_time = time.time()
+# Calculate duration
 duration = end_time - start_time
-print(f"Sorted: {sorted_data}")
+# Display sorted array
+print(f"Sorted: {sorted_array}")
+# Display duration
 print(f"Duration: {duration}")
