@@ -2,27 +2,7 @@ import random
 import time
 
 
-def top_down_merge_sort(data):
-    if len(data) <= 1:
-        return data
-
-    mid = len(data) // 2
-
-    left = []
-    for i in range(mid):
-        left.append(data[i])
-
-    right = []
-    for i in range(mid, len(data)):
-        right.append(data[i])
-
-    left = top_down_merge_sort(left)
-    right = top_down_merge_sort(right)
-
-    return merge(left, right)
-
-
-def merge(left, right):
+def top_down_merge(left, right):
     result = []
     i = j = 0
 
@@ -41,6 +21,26 @@ def merge(left, right):
         result.append(right[k])
 
     return result
+
+
+def top_down_merge_sort(data):
+    if len(data) <= 1:
+        return data
+
+    mid = len(data) // 2
+
+    left = []
+    for i in range(mid):
+        left.append(data[i])
+
+    right = []
+    for i in range(mid, len(data)):
+        right.append(data[i])
+
+    left = top_down_merge_sort(left)
+    right = top_down_merge_sort(right)
+
+    return top_down_merge(left, right)
 
 
 # Input Size
